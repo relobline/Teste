@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 500px;
+        height: 400px;
+        font-size: 100px;
+        padding: 10px;
+
+    }
+    body{
+        background-color: brown;
+    }
+</style>
+<body>
+    <h1>Amir precisa de sua ajuda...</h1>
+</body>
+<script>
+    let m = 0
+    const txt = document.querySelector('h1')
+    function muda(url){
+        window.location.href = url
+    }
+    
+    document.addEventListener('keydown', function(event){
+        switch(event.key){
+            case 'a':
+                txt.textContent = 'vá e ajude-o!!';
+                setInterval(muda('vv.html'), 200000);
+                break;
+                
+        }
+    })
+    
+</script>
+</html>

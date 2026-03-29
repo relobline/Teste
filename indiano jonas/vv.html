@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        background-color: brown;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        size: 1500px;
+    }
+    body{
+        background-color: green;
+    }
+    h2{
+        color: azure;
+    }
+    div{
+        width: 25px;
+        height: 25px;
+        background-color: red;
+        position:absolute
+    }
+    canvas{
+        width: 500px;
+        height: 500px;
+    }
+</style>
+<body>
+    <h1></h1>
+    <h2>pontuação: 0</h2>
+    <div></div>
+    <canvas></canvas>
+    
+</body>
+<script>
+    alert('colete 15 pontos do ifood para prosseguir')
+    const a = document.querySelector('div')
+    let l = 0
+    let t = 4000
+    function muda(url){
+        window.location.href = url
+    }
+    function novo(){
+        const a = document.querySelector('div')
+        const y = Math.random()* window.innerHeight
+        const x = Math.random()* window.innerWidth
+
+        a.style.left = x + 'px'
+        a.style.top = y + 'px'
+
+        
+
+    }
+    setInterval(novo, t);
+    const p = document.querySelector('h1')
+    let velocite = 20
+    let x = 50
+    let y = 50
+
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+
+    document.addEventListener('keydown', function(event) {
+    switch(event.key) {
+        case 'a':
+        case 'A':
+            
+            
+            x -= velocite;
+            p.style.left = x + 'px';
+            break;
+        case 'd':
+        case 'D':
+            
+            
+            x += velocite;
+            p.style.left = x + 'px';
+            break;
+        case 's':
+        case 'S':
+            
+            
+            y += velocite;
+            p.style.top = y + 'px';
+            break;
+        case 'w':
+        case 'W':
+            
+           
+            y -= velocite;
+            p.style.top = y + 'px';
+            break;    
+        
+    }
+    if(p && a){
+        const r1 = p.getBoundingClientRect();
+        const r2 = a.getBoundingClientRect();
+        
+        if (!(r1.right < r2.left || 
+              r1.left > r2.right || 
+              r1.bottom < r2.top || 
+              r1.top > r2.bottom)) {
+                
+                velocite = velocite + 10;
+                const h2 = document.querySelector('h2');
+                l += 1;
+                h2.textContent = `pontuação :${l}`
+                t -= t*10/100
+                if(l == 15){
+                    alert('muie biem')
+                    muda('index.html')
+                }
+              }}
+    
+
+});
+</script>
+</html>
